@@ -45,9 +45,10 @@ while True:
         }
 
         try:
-            #res = requests.post("http://uni.soracom.io", json=payload)
-            #print(f"POST result: {res.status_code}")
-            print(f"data: {payload}")
+            with open(filename, "rb") as f:
+                requests.post("http://uni.soracom.io", files={
+                    "file": (filename, f, "image/jpeg")
+                })
         except Exception as e:
             print(f"Error sending data: {e}")
 
