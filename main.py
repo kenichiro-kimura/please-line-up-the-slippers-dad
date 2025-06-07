@@ -51,5 +51,13 @@ while True:
         camera.stop_preview()
         print(f"Photo captured: {filename}")
 
+        try:
+            with open(filename, "rb") as f:
+                requests.post("http://uni.soracom.io", files={
+                    "file": (filename, f, "image/jpeg")
+                })
+        except Exception as e:
+            print(f"Error sending data: {e}")
+
     prev_value = current_value
 
