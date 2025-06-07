@@ -192,3 +192,18 @@ cython_debug/
 #  refer to https://docs.cursor.com/context/ignore-files
 .cursorignore
 .cursorindexingignore
+
+# packages for this project
+
+RPi*
+bin
+certifi*
+charset_normalizer*
+grove*
+idna*
+*.jpg
+picamera*
+requests*
+rpi_ws281x*
+smbus2*
+urllib3*
