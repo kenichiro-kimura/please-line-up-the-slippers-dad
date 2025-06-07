@@ -47,7 +47,7 @@ while True:
         try:
             #res = requests.post("http://uni.soracom.io", json=payload)
             #print(f"POST result: {res.status_code}")
-            printf(f"data: {payload}")
+            print(f"data: {payload}")
         except Exception as e:
             print(f"Error sending data: {e}")
 

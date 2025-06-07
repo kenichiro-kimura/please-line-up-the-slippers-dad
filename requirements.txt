@@ -1,3 +1,5 @@
 requests
 picamera
 grove.py
+RPi.GPIO
+smbus2
