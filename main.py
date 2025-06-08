@@ -25,6 +25,9 @@ camera.resolution = (WIDTH, HEIGHT)
 headers = {
     "Content-Type": "application/json"
 }
+photo_headers = {
+    "Content-Type": "image/jpeg"
+}
 prev_value = adc.read(0)
 
 while True:
@@ -53,9 +56,10 @@ while True:
 
         try:
             with open(filename, "rb") as f:
-                requests.post("http://uni.soracom.io", files={
+                requests.post(f"http://harvest-files.soracom.io/please-line-up-the-slippers-dad/{filename}", headers=photo_headers, files={
                     "file": (filename, f, "image/jpeg")
                 })
+                print(f"Upload result: {res.status_code} {res.text}")
         except Exception as e:
             print(f"Error sending data: {e}")
 
