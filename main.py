@@ -48,14 +48,15 @@ while True:
         print(f"Error sending data: {e}")
     if prev_value - current_value >= THRESHOLD:
         filename = f"photo_{unix_time}.jpg"
+        local_filename = "photo.jpg"
         camera.start_preview()
         time.sleep(2)
-        camera.capture(filename)
+        camera.capture(local_filename)
         camera.stop_preview()
         print(f"Photo captured: {filename}")
 
         try:
-            with open(filename, "rb") as f:
+            with open(local_filename, "rb") as f:
                 requests.post(f"http://harvest-files.soracom.io/please-line-up-the-slippers-dad/{filename}", headers=photo_headers, files={
                     "file": (filename, f, "image/jpeg")
                 })
