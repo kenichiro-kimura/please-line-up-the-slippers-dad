@@ -58,9 +58,7 @@ while True:
 
         try:
             with open(local_filename, "rb") as f:
-                requests.post(f"http://harvest-files.soracom.io/please-line-up-the-slippers-dad/{filename}", headers=photo_headers, files={
-                    "file": (filename, f, "image/jpeg")
-                })
+                requests.post(f"http://harvest-files.soracom.io/please-line-up-the-slippers-dad/{filename}", headers=photo_headers, data=f)
                 print(f"Upload result: {res.status_code} {res.text}")
         except Exception as e:
             print(f"Error sending data: {e}")
