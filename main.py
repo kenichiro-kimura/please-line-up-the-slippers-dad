@@ -3,7 +3,7 @@ import time
 import json
 import configparser
 import requests
-from picamera import PiCamera
+from picamera2 import Picamera2, Preview
 from grove.adc import ADC
 from datetime import datetime
 
@@ -18,8 +18,9 @@ HEIGHT = int(config['CAMERA']['height'])
 
 # --- Setup Devices ---
 adc = ADC(address=0x08)
-camera = PiCamera()
-camera.resolution = (WIDTH, HEIGHT)
+picam2 = Picamera2()
+camera_config = picam2.create_still_configuration(main={"size": (WIDTH, HEIGHT)})
+picam2.configure(camera_config)
 
 # --- Main Loop ---
 headers = {
@@ -49,10 +50,10 @@ while True:
     if prev_value - current_value >= THRESHOLD:
         filename = f"photo_{unix_time}.jpg"
         local_filename = "photo.jpg"
-        camera.start_preview()
+        picam2.start()
         time.sleep(2)
-        camera.capture(local_filename)
-        camera.stop_preview()
+        picam2.capture_file(local_filename)
+        picam2.stop()
         print(f"Photo captured: {filename}")
 
         try:

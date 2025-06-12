@@ -1,5 +1,5 @@
 requests
-picamera
+picamera2
 grove.py
 RPi.GPIO
 smbus2
