@@ -218,10 +218,11 @@ piexif*/
 pillow*/
 prctl.py
 python_prctl*/
-referencing-*/
+referencing*/
 rpds*/
 simplejpeg*/
 tqdm*/
+typing_extensions.py
 typing*/
 v4l2.py
 v4l2*/
